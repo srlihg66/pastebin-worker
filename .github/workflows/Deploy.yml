@@ -31,7 +31,7 @@ jobs:
         run: yarn build:frontend
 
       - name: Setup wrangler.toml
-        run: echo "${{ secrets.WRANGLER_TOML }}" > wrangler.toml
+        run: echo '${{ secrets.WRANGLER_TOML }}' > wrangler.toml
 
       - name: Deploy to Cloudflare
         env:
