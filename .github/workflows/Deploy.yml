@@ -24,15 +24,15 @@ jobs:
           node-version: 22
           cache: yarn
 
+      - name: Setup wrangler.toml
+        run: echo '${{ secrets.WRANGLER_TOML }}' > wrangler.toml
+        
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Build frontend
         run: yarn build:frontend
-
-      - name: Setup wrangler.toml
-        run: echo '${{ secrets.WRANGLER_TOML }}' > wrangler.toml
-
+        
       - name: Deploy to Cloudflare
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
